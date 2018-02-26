@@ -14,4 +14,5 @@
   -webkit-column-rule-color: lightblue; /* Chrome, Safari, Opera */
   -moz-column-rule-color: lightblue; /* Firefox */
   column-rule-color: lightblue;
+  margin-bottom: 50px;
 }
