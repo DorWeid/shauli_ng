@@ -21,7 +21,9 @@ header {
 }
 
 footer {
+  position: absolute;
   text-align: center;
+  bottom: 15px;
 }
 
 .app-fb-login {

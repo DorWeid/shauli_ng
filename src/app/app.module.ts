@@ -10,14 +10,21 @@ import { HomeComponent } from "./home/home.component";
 
 import { WeatherService } from "./weather.service";
 import { FBService } from "./fb.service";
+import { MapService } from "./map.service";
 
 import { AppRoutingModule } from "./app-routing/app-routing.module";
-import { GroupComponent } from './group/group.component';
+import { GroupComponent } from "./group/group.component";
 
 @NgModule({
-  declarations: [AppComponent, WeatherComponent, PostsComponent, HomeComponent, GroupComponent],
+  declarations: [
+    AppComponent,
+    WeatherComponent,
+    PostsComponent,
+    HomeComponent,
+    GroupComponent
+  ],
   imports: [BrowserModule, FormsModule, HttpModule, AppRoutingModule],
-  providers: [WeatherService, FBService],
+  providers: [WeatherService, FBService, MapService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
