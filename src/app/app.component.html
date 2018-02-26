@@ -5,18 +5,19 @@
   <aside>
     <app-weather></app-weather>
   </aside>
+  <aside class="app-fb-login">
+    <div class="fb-login-button" data-max-rows="1" data-size="small" data-button-type="continue_with" data-show-faces="true"
+      data-auto-logout-link="true" data-use-continue-as="true"></div>
+  </aside>
   <nav>
-    <a href="link1">Home</a>
-    <a href="link2">Heroes</a>
-    <a href="link3">About</a>
+    <a routerLink="/">Home</a>
+    <a routerLink="link2">Heroes</a>
+    <a routerLink="link3">About</a>
+    <a routerLink="/posts">Posts</a>
+    <a routerLink="/group">Group</a>
   </nav>
 </header>
 
-<section>Latest Overwatch news:
-  <ul>
-    <li>news 1</li>
-    <li>news 2</li>
-  </ul>
-</section>
+<router-outlet></router-outlet>
 
 <footer>Developed by Overwatch players for Overwatch players</footer>
