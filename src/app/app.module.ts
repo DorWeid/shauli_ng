@@ -13,6 +13,7 @@ import { HomeComponent } from "./home/home.component";
 import { WeatherService } from "./weather.service";
 import { FBService } from "./fb.service";
 import { MapService } from "./map.service";
+import { D3Service } from "./d3.service";
 
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { GroupComponent } from "./group/group.component";
@@ -33,7 +34,7 @@ import { StatisticsComponent } from "./statistics/statistics.component";
     AppRoutingModule,
     CommonModule
   ],
-  providers: [WeatherService, FBService, MapService],
+  providers: [WeatherService, FBService, MapService, D3Service],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,29 +1,28 @@
-import { Component, OnInit, ElementRef } from "@angular/core";
-
-declare var d3: any;
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  AfterContentInit,
+  AfterContentChecked,
+  ElementRef
+} from "@angular/core";
+import { D3Service } from "../d3.service";
 
 @Component({
   selector: "app-statistics",
   templateUrl: "./statistics.component.html",
   styleUrls: ["./statistics.component.css"]
 })
-export class StatisticsComponent implements OnInit {
-  constructor() {}
+export class StatisticsComponent implements AfterViewInit {
+  constructor(private d3Service: D3Service) {
+    this.prepareCharts = this.prepareCharts.bind(this);
+  }
 
-  ngOnInit() {
-    const data = [1, 2, 3];
-    debugger;
-    d3
-      .select(".chart")
-      .selectAll("div")
-      .data(data)
-      .enter()
-      .append("div")
-      .style("width", function(d) {
-        return d + "px";
-      })
-      .text(function(d) {
-        return d;
-      });
+  prepareCharts() {
+    this.d3Service.prepareSimpleBarChart();
+  }
+
+  ngAfterViewInit() {
+    this.d3Service.load(this.prepareCharts);
   }
 }
