@@ -6,11 +6,13 @@ import { AppComponent } from "../app.component";
 import { PostsComponent } from "../posts/posts.component";
 import { HomeComponent } from "../home/home.component";
 import { GroupComponent } from "../group/group.component";
+import { StatisticsComponent } from "../statistics/statistics.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "posts", component: PostsComponent },
-  { path: "group", component: GroupComponent }
+  { path: "group", component: GroupComponent },
+  { path: "statistics", component: StatisticsComponent }
 ];
 
 @NgModule({

@@ -13,10 +13,10 @@ import { HomeComponent } from "./home/home.component";
 import { WeatherService } from "./weather.service";
 import { FBService } from "./fb.service";
 import { MapService } from "./map.service";
-import { D3Service } from "d3-ng2-service";
 
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { GroupComponent } from "./group/group.component";
+import { StatisticsComponent } from "./statistics/statistics.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +24,7 @@ import { GroupComponent } from "./group/group.component";
     PostsComponent,
     HomeComponent,
     GroupComponent,
-    D3Service
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

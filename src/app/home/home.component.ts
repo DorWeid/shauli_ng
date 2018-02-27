@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from "@angular/core";
+import { Component, AfterViewInit, OnInit } from "@angular/core";
 import { MapService } from "../map.service";
 import { CommonModule } from "@angular/common";
 import { NgIf } from "@angular/common";
@@ -10,12 +10,12 @@ declare var google: any;
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.css"]
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements OnInit {
   mapLoaded = false;
 
   constructor(private mapService: MapService) {}
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.mapService.load(() => {
       this.mapLoaded = true;
       this.mapService.onMapsReady();
