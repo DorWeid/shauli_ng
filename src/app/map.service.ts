@@ -6,6 +6,7 @@ export class MapService {
   map;
   constructor() {
     this.addMarker = this.addMarker.bind(this);
+    this.onMapsReady = this.onMapsReady.bind(this);
   }
 
   onMapsReady() {
@@ -38,9 +39,9 @@ export class MapService {
   }
 
   // Load Google's script
-  load() {
+  load(onReadyCB) {
     // CB for map
-    (<any>window).googleMapsReady = this.onMapsReady.bind(this);
+    (<any>window).googleMapsReady = onReadyCB;
 
     // Script definition
     const script = document.createElement("script");

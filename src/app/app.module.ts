@@ -2,6 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
+import { CommonModule } from "@angular/common";
+import { NgIf } from "@angular/common";
 
 import { AppComponent } from "./app.component";
 import { WeatherComponent } from "./weather/weather.component";
@@ -14,7 +16,6 @@ import { MapService } from "./map.service";
 
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { GroupComponent } from "./group/group.component";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,13 @@ import { GroupComponent } from "./group/group.component";
     HomeComponent,
     GroupComponent
   ],
-  imports: [BrowserModule, FormsModule, HttpModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AppRoutingModule,
+    CommonModule
+  ],
   providers: [WeatherService, FBService, MapService],
   bootstrap: [AppComponent]
 })
