@@ -19,7 +19,14 @@ export class StatisticsComponent implements AfterViewInit {
   }
 
   prepareCharts() {
-    this.d3Service.prepareSimpleBarChart();
+    this.d3Service.prepareSimpleBarChart([30, 86, 168, 281, 303, 365]);
+    this.d3Service.preparePieChart([
+      { age: "5", population: 1000 },
+      { age: "6", population: 200 },
+      { age: "7", population: 3000 },
+      { age: "8", population: 400 },
+      { age: "9", population: 500 }
+    ]);
   }
 
   ngAfterViewInit() {
