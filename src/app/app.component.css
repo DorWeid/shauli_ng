@@ -8,7 +8,7 @@ h1 {
 }
 @font-face {
   font-family: "SomeFont";
-  src: url("./assets/fonts/SomeFont.ttf");
+  src: url("../assets/fonts/SomeFont.ttf");
 }
 
 h1:hover {

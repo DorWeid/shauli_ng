@@ -1,3 +1,52 @@
-<p>
-  posts works!
-</p>
+<h2>Add a New Post:</h2>
+<div>
+  <label>Title: </label>
+  <input type="text" #title>
+  <br />
+  <br />
+  <label>Content: </label>
+  <textarea rows="4" cols="50" #content></textarea>
+  <br />
+  <br />
+  <button (click)="addPost(content.value, title.value); content.value=''; title.value=''">Add</button>
+</div>
+
+
+
+<br />
+<br />
+<br />
+
+<h2>Posts</h2>
+<ul class="posts">
+  <li *ngFor="let post of posts" [class.selected]="hero === selectedHero">
+    <span>Author:
+      <b>{{post.authorName}}</b>
+    </span>
+    <span style="padding: 20px;">Date:
+      <b>{{post.date | date:"short"}}</b>
+    </span>
+    <br />
+    <br />
+    <span>Title:
+      <b>{{post.title}}</b>
+    </span>
+    <br />
+    <br />
+    <span>
+      Content:
+      <span *ngIf="!isEditing; else elseBlock">
+        <b>{{post.content}}</b>
+      </span>
+      <ng-template #elseBlock>
+        <textarea rows="4" cols="50" [(ngModel)]="post.content"></textarea>
+      </ng-template>
+    </span>
+    <br />
+    <br />
+    <div>
+      <button (click)="onEditToggle()">{{isEditing ? 'Save' : 'Edit'}}</button>
+      <button (click)="onPostRemove(post._id)">Remove</button>
+    </div>
+  </li>
+</ul>

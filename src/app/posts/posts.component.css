@@ -1,0 +1,7 @@
+.posts li {
+  background-color: rgb(255, 129, 129);
+  display: inline-block;
+  max-width: 50%;
+  border-radius: 10px 10px 10px 10px;
+  margin: 10px;
+}

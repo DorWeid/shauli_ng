@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
 import { NgIf } from "@angular/common";
 
@@ -14,10 +14,12 @@ import { WeatherService } from "./weather.service";
 import { FBService } from "./fb.service";
 import { MapService } from "./map.service";
 import { D3Service } from "./d3.service";
+import { PostsService } from "./posts.service";
 
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { GroupComponent } from "./group/group.component";
 import { StatisticsComponent } from "./statistics/statistics.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,11 +32,11 @@ import { StatisticsComponent } from "./statistics/statistics.component";
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     AppRoutingModule,
     CommonModule
   ],
-  providers: [WeatherService, FBService, MapService, D3Service],
+  providers: [WeatherService, FBService, MapService, D3Service, PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
