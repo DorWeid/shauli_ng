@@ -12,7 +12,7 @@ const httpOptions = {
 
 @Injectable()
 export class PostsService {
-  private url = "/api/post"; // URL to web api
+  private url = "/api/post";
   socket;
 
   constructor(private http: HttpClient) {

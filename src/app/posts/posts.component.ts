@@ -8,10 +8,22 @@ import { PostsService } from "../posts.service";
 })
 export class PostsComponent implements OnInit {
   posts = [];
+  heroes = [
+    {
+      id: 1,
+      name: "avner"
+    },
+    {
+      id: 2,
+      name: "dor"
+    }
+  ];
   isEditing = false;
+  selectedHero;
 
   constructor(private postsService: PostsService) {
     this.onEditToggle = this.onEditToggle.bind(this);
+    this.addPost = this.addPost.bind(this);
   }
 
   ngOnInit() {
@@ -38,11 +50,12 @@ export class PostsComponent implements OnInit {
     });
   }
 
-  addPost(content, title) {
+  addPost(content, title, authorName) {
+    debugger;
     // TODO: Use the proper author name
     const data = {
       title,
-      authorName: "dor",
+      authorName,
       content,
       date: new Date()
     };
@@ -50,5 +63,9 @@ export class PostsComponent implements OnInit {
     this.postsService.createPost(data).then(post => {
       this.posts.push(post);
     });
+  }
+
+  compareFn(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 }

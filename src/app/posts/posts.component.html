@@ -1,14 +1,31 @@
 <h2>Add a New Post:</h2>
 <div>
+
   <label>Title: </label>
   <input type="text" #title>
   <br />
   <br />
+  <label>Author: </label>
+  <input type="text" #authorName>
+  <br />
+  <br />
+
+  <label>Select Hero: </label>
+  <select [(ngModel)]="selectedHero">
+    <option *ngFor="let hero of heroes" [ngValue]="hero.id">
+      {{ hero.name }}
+    </option>
+  </select>
+  <br />
+  <br />
+
+
   <label>Content: </label>
   <textarea rows="4" cols="50" #content></textarea>
   <br />
   <br />
-  <button (click)="addPost(content.value, title.value); content.value=''; title.value=''">Add</button>
+
+  <button (click)="addPost(content.value, title.value, authorName.value); content.value=''; title.value=''; authorName.value=''">Add</button>
 </div>
 
 
@@ -19,7 +36,7 @@
 
 <h2>Posts</h2>
 <ul class="posts">
-  <li *ngFor="let post of posts" [class.selected]="hero === selectedHero">
+  <li *ngFor="let post of posts">
     <span>Author:
       <b>{{post.authorName}}</b>
     </span>
