@@ -18,6 +18,8 @@ export class PostsComponent implements OnInit {
     this.postsService.getPosts().then((posts: any) => {
       this.posts = posts;
     });
+
+    this.postsService.loadIOLib();
   }
 
   onEditToggle() {
