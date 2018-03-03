@@ -1,69 +1,62 @@
-<h2>Add a New Post:</h2>
-<div>
+<div class="posts-container">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add a New Post:
+      </mat-panel-title>
+    </mat-expansion-panel-header>
 
-  <label>Title: </label>
-  <input type="text" #title>
-  <br />
-  <br />
-  <label>Author: </label>
-  <input type="text" #authorName>
-  <br />
-  <br />
+    <div class="new-post">
+      <div class="new-post-group">
+        <mat-form-field class="new-post-short-field">
+          <input matInput placeholder="Title" #title>
+        </mat-form-field>
 
-  <label>Select Hero: </label>
-  <select [(ngModel)]="selectedHero">
-    <option *ngFor="let hero of heroes" [ngValue]="hero.id">
-      {{ hero.name }}
-    </option>
-  </select>
-  <br />
-  <br />
+        <mat-form-field class="new-post-short-field">
+          <input matInput placeholder="Author" #authorName>
+        </mat-form-field>
 
-
-  <label>Content: </label>
-  <textarea rows="4" cols="50" #content></textarea>
-  <br />
-  <br />
-
-  <button (click)="addPost(content.value, title.value, authorName.value); content.value=''; title.value=''; authorName.value=''">Add</button>
-</div>
-
-
-
-<br />
-<br />
-<br />
-
-<h2>Posts</h2>
-<ul class="posts">
-  <li *ngFor="let post of posts">
-    <span>Author:
-      <b>{{post.authorName}}</b>
-    </span>
-    <span style="padding: 20px;">Date:
-      <b>{{post.date | date:"short"}}</b>
-    </span>
-    <br />
-    <br />
-    <span>Title:
-      <b>{{post.title}}</b>
-    </span>
-    <br />
-    <br />
-    <span>
-      Content:
-      <span *ngIf="!isEditing; else elseBlock">
-        <b>{{post.content}}</b>
-      </span>
-      <ng-template #elseBlock>
-        <textarea rows="4" cols="50" [(ngModel)]="post.content"></textarea>
-      </ng-template>
-    </span>
-    <br />
-    <br />
-    <div>
-      <button (click)="onEditToggle()">{{isEditing ? 'Save' : 'Edit'}}</button>
-      <button (click)="onPostRemove(post._id)">Remove</button>
+        <mat-form-field class="new-post-short-field">
+          <mat-select [(ngModel)]="selectedHero" placeholder="Hero">
+            <mat-option *ngFor="let hero of heroes" [value]="hero.id">
+              {{ hero.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="new-post-group">
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Content" rows="2" #content></textarea>
+        </mat-form-field>
+      </div>
+      <button mat-button id="add-post-btn" (click)="addPost(content.value, title.value, authorName.value); content.value=''; title.value=''; authorName.value='';">Add</button>
     </div>
-  </li>
-</ul>
+  </mat-expansion-panel>
+  <br />
+
+  <h2>Posts</h2>
+  <div class="posts">
+    <mat-card *ngFor="let post of posts">
+      <mat-card-title>
+        <b>{{post.title}}</b>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <span> Date: <b>{{post.date | date:"short"}}</b> </span>
+      </mat-card-subtitle>
+      <mat-card-content>
+        <span *ngIf="!isEditing; else elseBlock">
+          <b>{{post.content}}</b>
+        </span>
+        <ng-template #elseBlock>
+          <textarea rows="4" cols="50" [(ngModel)]="post.content"></textarea>
+        </ng-template>
+        <!-- TODO: ADD HERO NAME -->
+        <span><b>{{post.authorName}},</b> </span>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="onEditToggle()">{{isEditing ? 'Save' : 'Edit'}}</button>
+        <button mat-button (click)="onPostRemove(post._id)">Remove</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

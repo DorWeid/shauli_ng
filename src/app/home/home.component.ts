@@ -20,5 +20,11 @@ export class HomeComponent implements OnInit {
       this.mapLoaded = true;
       this.mapService.onMapsReady();
     });
+
+    const size = 500;
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.font = "30px Arial";
+    ctx.strokeText("Latest News", 20, 40);
   }
 }

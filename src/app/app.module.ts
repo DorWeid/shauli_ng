@@ -4,6 +4,13 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
 import { NgIf } from "@angular/common";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
+import { MatExpansionModule } from '@angular/material';
 
 import { AppComponent } from "./app.component";
 import { WeatherComponent } from "./weather/weather.component";
@@ -34,7 +41,14 @@ import { StatisticsComponent } from "./statistics/statistics.component";
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatExpansionModule,
   ],
   providers: [WeatherService, FBService, MapService, D3Service, PostsService],
   bootstrap: [AppComponent]
