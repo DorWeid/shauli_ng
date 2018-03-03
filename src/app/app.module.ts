@@ -5,6 +5,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
 import { NgIf } from "@angular/common";
 
+import { FacebookModule } from "ngx-facebook";
+
 import { AppComponent } from "./app.component";
 import { WeatherComponent } from "./weather/weather.component";
 import { PostsComponent } from "./posts/posts.component";
@@ -34,7 +36,8 @@ import { StatisticsComponent } from "./statistics/statistics.component";
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    CommonModule
+    CommonModule,
+    FacebookModule.forRoot()
   ],
   providers: [WeatherService, FBService, MapService, D3Service, PostsService],
   bootstrap: [AppComponent]

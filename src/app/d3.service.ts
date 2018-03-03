@@ -99,7 +99,6 @@ export class D3Service {
       });
   }
 
-  // Load Google's script
   load(cb) {
     // Script definition
     const script = document.createElement("script");

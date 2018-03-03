@@ -1,35 +1,30 @@
 import { Injectable } from "@angular/core";
-
-// NOTE: This is here because TS does not recognize fetch properly...
-declare var FB;
+import { FacebookService, LoginOptions } from "ngx-facebook";
 
 @Injectable()
 export class FBService {
-  fb;
   isUserLoggedIn = false;
-  constructor() {
-    this.checkIfLoggedIn = this.checkIfLoggedIn.bind(this);
-    this.getFeed = this.getFeed.bind(this);
-  }
-
-  checkIfLoggedIn() {
-    FB.getLoginStatus(response => {
-      if (response.status === "authorized") {
-        this.isUserLoggedIn = true;
-      }
+  constructor(private fb: FacebookService) {
+    fb.init({
+      appId: "2061960544128041",
+      version: "v2.9"
     });
   }
 
-  getFeed() {
-    FB.api(
-      "/1816213938448899/feed",
-      "POST",
-      { message: "This is a test message" },
-      response => {
-        if (response && !response.error) {
-          /* handle the result */
-        }
-      }
-    );
+  loginWithFacebook(): void {
+    const options: LoginOptions = {
+      scope: "public_profile,user_friends,email,pages_show_list",
+      return_scopes: true,
+      enable_profile_selector: true
+    };
+
+    this.fb
+      .login(options)
+      .then((response: any) => {
+        this.fb.api("/me").then((res: any) => {
+          console.log("Got the users friends", res);
+        });
+      })
+      .catch((error: any) => console.error(error));
   }
 }
