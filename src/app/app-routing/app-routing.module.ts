@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from "../app.component";
 import { PostsComponent } from "../posts/posts.component";
+import { HerosComponent } from "../heros/heros.component";
 import { HomeComponent } from "../home/home.component";
 import { GroupComponent } from "../group/group.component";
 import { StatisticsComponent } from "../statistics/statistics.component";
@@ -11,6 +12,7 @@ import { StatisticsComponent } from "../statistics/statistics.component";
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "posts", component: PostsComponent },
+  { path: "heros", component: HerosComponent },
   { path: "group", component: GroupComponent },
   { path: "statistics", component: StatisticsComponent }
 ];

@@ -1,0 +1,32 @@
+.heros-table-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.new-post-short-field {
+  width: 10vw;
+  margin-right: 1vw;
+}
+
+#heros-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#heros-table td, #heros-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#heros-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#heros-table tr:hover {background-color: #ddd;}
+
+#heros-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4c78af;
+    color: white;
+}

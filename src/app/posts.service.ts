@@ -15,7 +15,7 @@ export class PostsService {
   private url = "/api/post";
   socket;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient ) {
     this.getPosts = this.getPosts.bind(this);
     this.updatePost = this.updatePost.bind(this);
     this.createPost = this.createPost.bind(this);
