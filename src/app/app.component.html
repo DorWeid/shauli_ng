@@ -1,21 +1,68 @@
 <header>
-  <h1>
+  <div class="app-bar-title">
     {{title}}
-  </h1>
+  </div>
   <aside>
     <app-weather></app-weather>
   </aside>
-  <nav>
-    <a routerLink="/">Home</a>
-    <a routerLink="link2">Heroes</a>
-    <a routerLink="link3">About</a>
-    <a routerLink="/posts">Posts</a>
-    <a routerLink="/group">Group</a>
-    <a routerLink="/statistics">Statistics</a>
+  <nav class="app-nav-bar">
+    <div class="part-nav-bar">
+      <a routerLink="/">Home</a>
+      <a routerLink="link2">Heroes</a>
+      <a routerLink="link3">About</a>
+    </div>
+    <div class="part-nav-bar">
+      <a routerLink="/posts">Posts</a>
+      <a routerLink="/group">Group</a>
+      <a routerLink="/statistics">Statistics</a>
+    </div>
   </nav>
 </header>
 
-<router-outlet></router-outlet>
+<aside class="heroes-aside">
+  <h2>Heroes</h2>
+  <h3>Supports</h3>
+  <ul>
+    <li>Ana</li>
+    <li>Lucio</li>
+    <li>Mercy</li>
+    <li>Symmetra</li>
+    <li>Zenyatta</li>
+  </ul>
+  <h3>Tanks</h3>
+  <ul>
+    <li>D.va</li>
+    <li>Orisa</li>
+    <li>Reinhardt</li>
+    <li>Roadhog</li>
+    <li>Winston</li>
+    <li>Zarya</li>
+  </ul>
+  <h3>Defenders</h3>
+  <ul>
+    <li>Bastion</li>
+    <li>Hanzo</li>
+    <li>Junkrat</li>
+    <li>Mei</li>
+    <li>Torbjorn</li>
+    <li>WidowMaker</li>
+  </ul>
+  <h3>Attacks</h3>
+  <ul>
+    <li>DoomFist</li>
+    <li>Genji</li>
+    <li>McCree</li>
+    <li>Pharah</li>
+    <li>Reaper</li>
+    <li>Soldier</li>
+    <li>Sombra</li>
+    <li>Tracer</li>
+    <li>Princess Liza</li>
+  </ul>
+</aside>
+<div class="main-container">
+  <router-outlet></router-outlet>
+</div>
 
 
 <footer>Developed by Overwatch players for Overwatch players</footer>

@@ -16,6 +16,10 @@ export class PostsComponent implements OnInit {
     {
       id: 2,
       name: "dor"
+    },
+    {
+      id: 3,
+      name: "princess liza"
     }
   ];
   isEditing = false;

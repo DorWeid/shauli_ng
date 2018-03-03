@@ -4,6 +4,13 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
 import { NgIf } from "@angular/common";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
+import { MatExpansionModule } from '@angular/material';
 
 import { FacebookModule } from "ngx-facebook";
 
@@ -37,6 +44,13 @@ import { StatisticsComponent } from "./statistics/statistics.component";
     HttpClientModule,
     AppRoutingModule,
     CommonModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatExpansionModule,
     FacebookModule.forRoot()
   ],
   providers: [WeatherService, FBService, MapService, D3Service, PostsService],

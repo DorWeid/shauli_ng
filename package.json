@@ -28,8 +28,11 @@
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
+    "@angular/animations": "^5.2.7",
+    "@angular/cdk": "^5.2.3",
     "@angular/cli": "^1.7.1",
     "@angular/compiler-cli": "^5.2.6",
+    "@angular/material": "^5.2.3",
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
     "codelyzer": "^4.1.0",
