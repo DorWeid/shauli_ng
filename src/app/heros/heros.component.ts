@@ -21,9 +21,9 @@ export class HerosComponent implements OnInit {
     this.getHeroes();
   }
 
-  getHeroes(): void {
-    this.heros = this.herosService.getHeroes().then((heros: any) => {
-      this.heros = heros || [];
+  getHeroes() {
+    this.herosService.getHeroes().then((heros: any) => {
+      this.heros = heros;
     });
   }
 }
