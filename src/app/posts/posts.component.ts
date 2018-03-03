@@ -58,11 +58,12 @@ export class PostsComponent implements OnInit {
   }
 
   addPost(content, title, authorName) {
+    debugger;
     const data = {
       title,
       authorName,
       content,
-      heroId: this.selectedHero,
+      hero: this.selectedHero,
       date: new Date()
     };
 
@@ -72,10 +73,8 @@ export class PostsComponent implements OnInit {
   }
 
   searchPosts(authorName) {
-    const data = {
-      role: selectedRoleFilter,
-      authorName,
-      heroId: selectedHeroFilter
-    };
+    this.postsService.getFilteredPosts(this.selectedRoleFilter || '', authorName, this.selectedHeroFilter || '').then(filteredPosts => {
+      this.posts = filteredPosts;
+    });
   }
 }

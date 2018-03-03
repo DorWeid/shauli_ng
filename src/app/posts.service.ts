@@ -19,6 +19,7 @@ export class PostsService {
     this.getPosts = this.getPosts.bind(this);
     this.updatePost = this.updatePost.bind(this);
     this.createPost = this.createPost.bind(this);
+    this.getFilteredPosts = this.getFilteredPosts.bind(this);
   }
 
   getPosts() {
@@ -26,6 +27,18 @@ export class PostsService {
       .get(this.url)
       .pipe(
         map((posts: any) => {
+          return posts.posts;
+        })
+      )
+      .toPromise();
+  }
+
+  getFilteredPosts(role, authorName, heroId) {
+    return this.http
+      .get(`${this.url}?role=${role}&authorName=${authorName}&hero=${heroId}`)
+      .pipe(
+        map((posts: any) => {
+          debugger;
           return posts.posts;
         })
       )

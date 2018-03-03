@@ -4,7 +4,7 @@
 
 .app-bar-title {
   text-align: center;
-  color: rgb(76, 175, 172);
+  color: rgb(76, 211, 219);
   font-family: Lobster;
   font-size: 350%;
   text-shadow: 0px 0px 5px #000000;
@@ -18,7 +18,7 @@
 }
 
 .app-nav-bar {
-  margin-top: -5vh;
+  margin-top: -6vh;
   display: flex;
   justify-content: space-between;
 }
@@ -26,7 +26,7 @@
 .part-nav-bar {
   border-bottom-style: double;
   border-top-style: double;
-  width: 29%;
+  width: 26%;
 }
 
 .app-fb-login {
@@ -92,5 +92,5 @@ nav {
 }
 
 nav a {
-  padding: 40px;
+  padding: 10px;
 }

@@ -30,9 +30,9 @@ import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { GroupComponent } from "./group/group.component";
 import { StatisticsComponent } from "./statistics/statistics.component";
 import { HerosComponent } from './heros/heros.component';
-import { HeroNameFilterPipe } from './hero-name-filter.pipe';
-import { HeroHpFilterPipe } from './hero-hp-filter.pipe';
-import { HeroRoleFilterPipe } from './hero-role-filter.pipe';
+import { HeroNameFilterPipe } from './pipes/hero-name-filter.pipe';
+import { HeroHpFilterPipe } from './pipes/hero-hp-filter.pipe';
+import { HeroRoleFilterPipe } from './pipes/hero-role-filter.pipe';
 
 @NgModule({
   declarations: [
