@@ -1,25 +1,33 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 /* Application-wide Styles */
 h1 {
   color: #369;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: MuktaMalar;
   font-size: 250%;
 }
 h2,
 h3 {
   color: #444;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: MuktaMalar;
   font-weight: lighter;
 }
 body {
   margin: 2em;
+  background-color: #7b8ea5;
+  color: #102031;
 }
 body,
 input[text],
 button {
-  color: #888;
-  font-family: Cambria, Georgia;
+  font-family: MuktaMalar;
 }
 /* everywhere else */
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: MuktaMalar;
+}
+
+@font-face {
+  font-family: "MuktaMalar";
+  src: url("./assets/fonts/MuktaMalar-Regular.ttf");
 }

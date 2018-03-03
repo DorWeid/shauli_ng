@@ -1,7 +1,64 @@
-.posts li {
-  background-color: rgb(255, 129, 129);
-  display: inline-block;
+.posts-container {
+  padding-left: 30px;
+}
+
+.posts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.posts mat-card {
+  background-color: #314552;
+  color: white;
   max-width: 50%;
   border-radius: 10px 10px 10px 10px;
   margin: 10px;
+  flex-basis: 25%;
+  -webkit-box-shadow: 0px 0px 15px black;
+  -moz-box-shadow:    0px 0px 15px black;
+}
+
+.new-post {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.new-post-group {
+  display: flex;
+}
+
+.new-post-short-field {
+  width: 10vw;
+}
+
+mat-expansion-panel {
+  background-color: #96aebf;
+}
+
+mat-form-field {
+  color: black;
+  width: 32vw;
+  margin-right: 1vw;
+}
+
+mat-card-subtitle {
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-button {
+  background-color: #526573;
+  border-radius: 12px 12px 12px 12px;
+}
+
+#add-post-btn {
+  width: 20vw;
 }

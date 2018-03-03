@@ -1,28 +1,32 @@
-h1 {
-  text-align: center;
-  color: #369;
-  font-family: SomeFont;
-  font-size: 250%;
-  text-shadow: 0px 0px 5px #000000;
-  transition: text-shadow 1s;
-}
-@font-face {
-  font-family: "SomeFont";
-  src: url("../assets/fonts/SomeFont.ttf");
+.main-container {
+  width: 75%;
 }
 
-h1:hover {
+.app-bar-title {
+  text-align: center;
+  color: rgb(76, 175, 172);
+  font-family: Lobster;
+  font-size: 350%;
+  text-shadow: 0px 0px 5px #000000;
+  transition: text-shadow 1s;
+  /* padding-right: 1vw; */
+}
+
+.app-bar-title:hover {
   text-shadow: 0px 0px 50px #000000;
   cursor: pointer;
 }
 
-header {
-  padding-bottom: 100px;
+.app-nav-bar {
+  margin-top: -5vh;
+  display: flex;
+  justify-content: space-between;
 }
 
-footer {
-  text-align: center;
-  padding-top: 50px;
+.part-nav-bar {
+  border-bottom-style: double;
+  border-top-style: double;
+  width: 29%;
 }
 
 .app-fb-login {
@@ -31,10 +35,60 @@ footer {
   right: 10px;
 }
 
+.heroes-aside {
+  float: right;
+  width: 20vw;
+
+}
+
+@font-face {
+  font-family: "SomeFont";
+  src: url("../assets/fonts/SomeFont.ttf");
+}
+
+@font-face {
+  font-family: "Lobster";
+  src: url("../assets/fonts/Lobster-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Questrial";
+  src: url("../assets/fonts/Questrial-Regular.ttf");
+}
+
+
+header {
+  padding-bottom: 5vh;
+}
+
+footer {
+  text-align: center;
+  padding-top: 50px;
+  color: rgb(247, 228, 149);
+}
+
+
+a {
+  color: black;
+  font-family: Questrial;
+  font-size: 20px;
+  text-decoration-line: none;
+}
+
+a:active {
+  color: rgb(247, 228, 149);
+}
+
+a:hover {
+  color: rgb(247, 228, 149);
+}
+
 nav {
-  background-color: rgb(151, 151, 151);
+  /* background-color: rgb(151, 151, 151); */
   border-radius: 10px 10px 10px 10px;
   text-align: center;
+  letter-spacing: .1em;
+  /* line-height: 8.125em; */
 }
 
 nav a {
