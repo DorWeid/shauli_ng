@@ -12,6 +12,8 @@ import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material';
 
+import { FacebookModule } from "ngx-facebook";
+
 import { AppComponent } from "./app.component";
 import { WeatherComponent } from "./weather/weather.component";
 import { PostsComponent } from "./posts/posts.component";
@@ -58,6 +60,7 @@ import { HeroRoleFilterPipe } from './hero-role-filter.pipe';
     MatInputModule,
     MatSelectModule,
     MatExpansionModule,
+    FacebookModule.forRoot()
   ],
   providers: [WeatherService, FBService, MapService, D3Service, PostsService, HerosService],
   bootstrap: [AppComponent]
