@@ -23,6 +23,7 @@ export class PostsComponent implements OnInit {
     }
   ];
   isEditing = false;
+  currentEditIndex = -1;
   selectedHero;
 
   constructor(private postsService: PostsService) {
@@ -38,13 +39,15 @@ export class PostsComponent implements OnInit {
     this.postsService.loadIOLib();
   }
 
-  onEditToggle() {
+  onEditToggle(idx) {
     if (this.isEditing) {
-      this.postsService.updatePost(this.posts[0]).then(() => {
+      this.postsService.updatePost(this.posts[idx]).then(() => {
         this.isEditing = false;
+        this.currentEditIndex = -1;
       });
     } else {
       this.isEditing = true;
+      this.currentEditIndex = idx;
     }
   }
 
@@ -55,21 +58,17 @@ export class PostsComponent implements OnInit {
   }
 
   addPost(content, title, authorName) {
-    debugger;
     // TODO: Use the proper author name
     const data = {
       title,
       authorName,
       content,
+      heroId: this.selectedHero,
       date: new Date()
     };
 
     this.postsService.createPost(data).then(post => {
       this.posts.push(post);
     });
-  }
-
-  compareFn(c1: any, c2: any): boolean {
-    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 }

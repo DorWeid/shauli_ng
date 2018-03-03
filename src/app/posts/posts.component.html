@@ -36,25 +36,29 @@
 
   <h2>Posts</h2>
   <div class="posts">
-    <mat-card *ngFor="let post of posts">
+    <mat-card *ngFor="let post of posts; let i = index" [attr.data-index]="i">
       <mat-card-title>
         <b>{{post.title}}</b>
       </mat-card-title>
       <mat-card-subtitle>
-        <span> Date: <b>{{post.date | date:"short"}}</b> </span>
+        <span> Date:
+          <b>{{post.date | date:"short"}}</b>
+        </span>
       </mat-card-subtitle>
       <mat-card-content>
-        <span *ngIf="!isEditing; else elseBlock">
+        <span *ngIf="!isEditing;">
           <b>{{post.content}}</b>
         </span>
-        <ng-template #elseBlock>
+        <span *ngIf="currentEditIndex==i">
           <textarea rows="4" cols="50" [(ngModel)]="post.content"></textarea>
-        </ng-template>
+        </span>
         <!-- TODO: ADD HERO NAME -->
-        <span><b>{{post.authorName}},</b> </span>
+        <span>
+          <b>{{post.authorName}},</b>
+        </span>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button (click)="onEditToggle()">{{isEditing ? 'Save' : 'Edit'}}</button>
+        <button mat-button (click)="onEditToggle(i)">{{isEditing ? 'Save' : 'Edit'}}</button>
         <button mat-button (click)="onPostRemove(post._id)">Remove</button>
       </mat-card-actions>
     </mat-card>
