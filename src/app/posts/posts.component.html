@@ -5,7 +5,6 @@
         Add a New Post:
       </mat-panel-title>
     </mat-expansion-panel-header>
-
     <div class="new-post">
       <div class="new-post-group">
         <mat-form-field class="new-post-short-field">
@@ -18,7 +17,7 @@
 
         <mat-form-field class="new-post-short-field">
           <mat-select [(ngModel)]="selectedHero" placeholder="Hero">
-            <mat-option *ngFor="let hero of heroes" [value]="hero.id">
+            <mat-option *ngFor="let hero of heros" [value]="hero.id">
               {{ hero.name }}
             </mat-option>
           </mat-select>
@@ -33,6 +32,29 @@
     </div>
   </mat-expansion-panel>
   <br />
+
+  <h3>Filter posts by </h3>
+  <mat-form-field class="new-post-short-field">
+    <mat-select [(ngModel)]="selectedRoleFilter" placeholder="Role">
+      <mat-option *ngFor="let role of roles" [value]="role">
+        {{ role }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="new-post-short-field">
+    <input matInput placeholder="Author Name" #authorNameFilter>
+  </mat-form-field>
+
+  <mat-form-field class="new-post-short-field">
+    <mat-select [(ngModel)]="selectedHeroFilter" placeholder="Hero">
+      <mat-option *ngFor="let hero of heros" [value]="hero.id">
+        {{ hero.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-button (click)="searchPosts(authorNameFilter.value); authorNameFilter.value='';">Search</button>
 
   <h2>Posts</h2>
   <div class="posts">
@@ -52,9 +74,8 @@
         <span *ngIf="currentEditIndex==i">
           <textarea rows="4" cols="50" [(ngModel)]="post.content"></textarea>
         </span>
-        <!-- TODO: ADD HERO NAME -->
         <span>
-          <b>{{post.authorName}},</b>
+          <b>{{post.authorName}},{{post.heroId}}</b>
         </span>
       </mat-card-content>
       <mat-card-actions>

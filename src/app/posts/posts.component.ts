@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PostsService } from "../posts.service";
+import { HerosService } from "../heros.service";
 
 @Component({
   selector: "app-posts",
@@ -8,25 +9,17 @@ import { PostsService } from "../posts.service";
 })
 export class PostsComponent implements OnInit {
   posts = [];
-  heroes = [
-    {
-      id: 1,
-      name: "avner"
-    },
-    {
-      id: 2,
-      name: "dor"
-    },
-    {
-      id: 3,
-      name: "princess liza"
-    }
-  ];
+  heros = [];
   isEditing = false;
   currentEditIndex = -1;
   selectedHero;
 
-  constructor(private postsService: PostsService) {
+  // For the filters
+  roles = ['', 'Attack', 'Defender', 'Tank', 'Support'];
+  selectedRoleFilter;
+  selectedHeroFilter;
+
+  constructor(private postsService: PostsService, private herosService: HerosService) {
     this.onEditToggle = this.onEditToggle.bind(this);
     this.addPost = this.addPost.bind(this);
   }
@@ -37,6 +30,13 @@ export class PostsComponent implements OnInit {
     });
 
     this.postsService.loadIOLib();
+
+    this.herosService.getHeroes().then((heros: any) => {
+      this.heros = heros.map(h => ({id: h._id, name: h.name}));
+      // Puts a space value for defualt
+      this.heros.unshift({id: '', name: ''});
+    });
+
   }
 
   onEditToggle(idx) {
@@ -58,7 +58,6 @@ export class PostsComponent implements OnInit {
   }
 
   addPost(content, title, authorName) {
-    // TODO: Use the proper author name
     const data = {
       title,
       authorName,
@@ -70,5 +69,13 @@ export class PostsComponent implements OnInit {
     this.postsService.createPost(data).then(post => {
       this.posts.push(post);
     });
+  }
+
+  searchPosts(authorName) {
+    const data = {
+      role: selectedRoleFilter,
+      authorName,
+      heroId: selectedHeroFilter
+    };
   }
 }
