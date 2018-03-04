@@ -59,6 +59,15 @@ mat-card-content {
   border-radius: 12px 12px 12px 12px;
 }
 
+a {
+  text-decoration-line: none;
+  color: white;
+}
+
+a:hover {
+  color: rgb(76, 211, 219);
+}
+
 #add-post-btn {
   width: 20vw;
 }

@@ -20,6 +20,8 @@ export class PostsService {
     this.updatePost = this.updatePost.bind(this);
     this.createPost = this.createPost.bind(this);
     this.getFilteredPosts = this.getFilteredPosts.bind(this);
+    this.getPostsStats = this.getPostsStats.bind(this);
+    this.getPost = this.getPost.bind(this);
   }
 
   getPosts() {
@@ -28,6 +30,28 @@ export class PostsService {
       .pipe(
         map((posts: any) => {
           return posts.posts;
+        })
+      )
+      .toPromise();
+  }
+
+  getPost(postId) {
+    return this.http
+      .get(`${this.url}/id/${postId}`)
+      .pipe(
+        map((response: any) => {
+          return response.post;
+        })
+      )
+      .toPromise();
+  }
+
+  getPostsStats() {
+    return this.http
+      .get(`${this.url}/stats`)
+      .pipe(
+        map((data: any) => {
+          return data.stats;
         })
       )
       .toPromise();

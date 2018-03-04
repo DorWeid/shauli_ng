@@ -6,9 +6,11 @@ export class D3Service {
   constructor() {
     this.load = this.load.bind(this);
     this.prepareSimpleBarChart = this.prepareSimpleBarChart.bind(this);
+    this.prepareBarChart = this.prepareBarChart.bind(this);
   }
 
   prepareSimpleBarChart(data) {
+
     d3
       .select(".chart")
       .selectAll("div")
@@ -16,7 +18,7 @@ export class D3Service {
       .enter()
       .append("div")
       .style("width", function(d) {
-        return d * 3 + "px";
+        return d.posts * 50 + "px";
       })
       .style("margin", d => {
         return "10px";
@@ -27,6 +29,9 @@ export class D3Service {
       .style("color", function(d) {
         return "white";
       })
+      .style("class", function(d) {
+        return "bar";
+      })
       .style("border-radius", function(d) {
         return "10px 10px 10px 10px";
       })
@@ -34,8 +39,51 @@ export class D3Service {
         return "center";
       })
       .text(function(d) {
-        return `${d} posts`;
+        return ` ${d.hero} - ${d.posts} posts`;
       });
+  }
+
+  prepareBarChart(data) {
+    var svg = d3.select("svg");
+    var margin = { top: 20, right: 20, bottom: 30, left: 40 };
+    var width = +svg.attr("width") - margin.left - margin.right;
+    var height = +svg.attr("height") - margin.top - margin.bottom;
+
+    var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+        y = d3.scaleLinear().rangeRound([height, 0]);
+
+    var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    x.domain(data.map(function (d) { return d.hero; }));
+    y.domain([0, d3.max(data, function (d) { return d.posts; })]);
+
+    g.append("g")
+        .attr("class", "axis axis--x")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+
+    g.append("g")
+        .attr("class", "axis axis--y")
+        .call(d3.axisLeft(y).ticks(d3.max(data, function (d) { return d.posts; })))
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Frequency");
+
+    g.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .style("fill", d => {
+          return "steelblue";
+        })
+        .attr("class", "bar")
+        .attr("x", function (d) { return x(d.hero); })
+        .attr("y", function (d) { return y(d.posts); })
+        .attr("width", x.bandwidth())
+        .attr("height", function (d) { return height - y(d.posts); });;
   }
 
   preparePieChart(data) {
@@ -61,7 +109,7 @@ export class D3Service {
       .pie()
       .sort(null)
       .value(function(d) {
-        return d.population;
+        return d.heros;
       });
 
     var path = d3
@@ -85,7 +133,7 @@ export class D3Service {
       .append("path")
       .attr("d", path)
       .attr("fill", function(d) {
-        return color(d.data.age);
+        return color(d.data.role);
       });
 
     arc
@@ -95,9 +143,10 @@ export class D3Service {
       })
       .attr("dy", "0.35em")
       .text(function(d) {
-        return d.data.age;
+        return d.data.role;
       });
   }
+
 
   load(cb) {
     // Script definition

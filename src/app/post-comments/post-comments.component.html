@@ -1,0 +1,75 @@
+<div>
+  <div>
+    <button mat-button (click)="gotoPosts()">Back</button>
+  </div>
+  <div *ngIf="post">
+    <!-- POST CARD -->
+    <mat-card class="displayed-post">
+      <mat-card-title>
+        <b>{{post.title}}</b>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <span> Date:
+          <b>{{post.date | date:"short"}}</b>
+        </span>
+      </mat-card-subtitle>
+      <mat-card-content>
+        <span>
+          <b>{{post.content}}</b>
+        </span>
+        <span>
+          <b>{{post.authorName}},{{post.hero.name}}</b>
+        </span>
+      </mat-card-content>
+    </mat-card>
+    <!-- ALL POST COMMENTS -->
+    <div>
+      <div class="comments-title"> Comments: </div>
+      <div *ngIf="post.comments.length == 0">
+        No comments yet. Be first to leave a comment!
+      </div>
+      <mat-card class="comment-card" *ngFor="let comment of post.comments; let i = index" [attr.data-index]="i">
+        <mat-card-title>
+          <b>{{comment.title}}</b>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <span> Author name:
+            <b>{{comment.authorName}}</b>
+          </span>
+        </mat-card-subtitle>
+        <mat-card-content>
+          <div>
+            <b>{{comment.content}}</b>
+          </div>
+          <div>
+            <b>sitrUrl: {{comment.authorSiteURL}}</b>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- ADDING NEW COMMENT  -->
+    <div class="new-comment">
+      <div>
+        <mat-form-field class="new-comment-field">
+          <input matInput placeholder="Your name" #authorName>
+        </mat-form-field>
+
+        <mat-form-field class="new-comment-field">
+          <input matInput placeholder="Title" #title>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="new-comment-field">
+          <input matInput placeholder="Your site Url" #siteUrl>
+        </mat-form-field>
+
+        <mat-form-field class="new-comment-content-field">
+          <textarea matInput placeholder="Content" rows="2" #content></textarea>
+        </mat-form-field>
+      </div>
+
+      <button mat-button id="add-comment-btn" (click)="addComment(title.value, authorName.value, siteUrl.value, content.value); content.value=''; title.value=''; authorName.value='';">Add Comment</button>
+    </div>
+  </div>
+</div>

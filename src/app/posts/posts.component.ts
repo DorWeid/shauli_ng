@@ -1,6 +1,11 @@
 import { Component, OnInit } from "@angular/core";
+import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
 import { PostsService } from "../posts.service";
 import { HerosService } from "../heros.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-posts",
@@ -19,7 +24,10 @@ export class PostsComponent implements OnInit {
   selectedRoleFilter;
   selectedHeroFilter;
 
-  constructor(private postsService: PostsService, private herosService: HerosService) {
+  constructor(
+    private postsService: PostsService,
+    private herosService: HerosService,
+    private route: ActivatedRoute) {
     this.onEditToggle = this.onEditToggle.bind(this);
     this.addPost = this.addPost.bind(this);
   }
@@ -36,7 +44,6 @@ export class PostsComponent implements OnInit {
       // Puts a space value for defualt
       this.heros.unshift({id: '', name: ''});
     });
-
   }
 
   onEditToggle(idx) {
@@ -58,7 +65,6 @@ export class PostsComponent implements OnInit {
   }
 
   addPost(content, title, authorName) {
-    debugger;
     const data = {
       title,
       authorName,

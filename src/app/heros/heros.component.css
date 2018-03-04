@@ -9,6 +9,12 @@
   margin-right: 1vw;
 }
 
+.roles-pie-chart {
+  padding-top: 5vh;
+  display: flex;
+  justify-content: center;
+}
+
 #heros-table {
   border-collapse: collapse;
   width: 100%;

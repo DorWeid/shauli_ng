@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material';
+import { MatSortModule } from '@angular/material/sort';
 
 import { FacebookModule } from "ngx-facebook";
 
@@ -25,6 +26,7 @@ import { MapService } from "./map.service";
 import { D3Service } from "./d3.service";
 import { PostsService } from "./posts.service";
 import { HerosService } from "./heros.service";
+import { CommentsService } from "./comments.service";
 
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { GroupComponent } from "./group/group.component";
@@ -33,36 +35,42 @@ import { HerosComponent } from './heros/heros.component';
 import { HeroNameFilterPipe } from './pipes/hero-name-filter.pipe';
 import { HeroHpFilterPipe } from './pipes/hero-hp-filter.pipe';
 import { HeroRoleFilterPipe } from './pipes/hero-role-filter.pipe';
+import { PostCommentsComponent } from './post-comments/post-comments.component';
+
+import { PostsModule } from './posts/posts.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherComponent,
-    PostsComponent,
     HomeComponent,
+    // PostsComponent,
     GroupComponent,
     StatisticsComponent,
     HerosComponent,
     HeroNameFilterPipe,
     HeroHpFilterPipe,
     HeroRoleFilterPipe,
+    // PostCommentsComponent,
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    CommonModule,
-    BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     MatExpansionModule,
-    FacebookModule.forRoot()
+    MatSortModule,
+    BrowserModule,
+    FacebookModule.forRoot(),
+    FormsModule,
+    HttpClientModule,
+    CommonModule,
+    PostsModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
   ],
-  providers: [WeatherService, FBService, MapService, D3Service, PostsService, HerosService],
+  providers: [WeatherService, FBService, MapService, D3Service, PostsService, HerosService, CommentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

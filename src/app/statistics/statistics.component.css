@@ -1,8 +1,11 @@
-.chart div {
-  font: 10px sans-serif;
-  background-color: steelblue;
-  text-align: right;
-  padding: 3px;
-  margin: 1px;
-  color: white;
+.bar {
+  fill: steelblue !important;
+}
+
+.bar:hover {
+  fill: brown !important;
+}
+
+.axis--x path {
+  display: none !important;
 }

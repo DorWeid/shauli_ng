@@ -17,15 +17,15 @@
   </mat-form-field>
 
   <div class="heros-table-container mat-elevation-z8">
-    <table id="heros-table">
+    <table id="heros-table" matSort (matSortChange)="sortData($event)">
       <thead>
-        <th>Name</th>
-        <th>Role</th>
-        <th>Attack Style</th>
-        <th>Hp</th>
+        <th mat-sort-header="name">Name</th>
+        <th mat-sort-header="role">Role</th>
+        <th mat-sort-header="attackStyle">Attack Style</th>
+        <th mat-sort-header="hp">Hp</th>
       </thead>
       <tbody>
-        <tr *ngFor="let hero of heros | heroNameFilter:name | heroHpFilter:hp | heroRoleFilter:selectedRole">
+        <tr *ngFor="let hero of sortedHeros | heroNameFilter:name | heroHpFilter:hp | heroRoleFilter:selectedRole">
             <td>{{hero.name}}</td>
             <td>{{hero.role}}</td>
             <td>{{hero.attackStyle}}</td>
@@ -33,5 +33,9 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="roles-pie-chart">
+    <svg width="400" height="350"></svg>
   </div>
 </div>
