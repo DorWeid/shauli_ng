@@ -6,6 +6,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PostsService } from "../posts.service";
 import { HerosService } from "../heros.service";
 import { Router } from '@angular/router';
+import * as alertify from 'alertify.js';
+
 
 @Component({
   selector: "app-posts",
@@ -64,7 +66,10 @@ export class PostsComponent implements OnInit {
     });
   }
 
-  addPost(content, title, authorName) {
+  addPost(contentRef, titleRef, authorNameRef) {
+    const content = contentRef.value
+    const title = titleRef.value
+    const authorName = authorNameRef.value
     const data = {
       title,
       authorName,
@@ -73,9 +78,36 @@ export class PostsComponent implements OnInit {
       date: new Date()
     };
 
+
+    if (!title) {
+      alertify.error("Please enter title!");
+      return;
+    }
+    if (!authorName) {
+      alertify.error("Please enter author name");
+      return;
+    }
+    if (!content) {
+      alertify.error("Please enter content");
+      return;
+    }
+    if (!this.selectedHero) {
+      alertify.error("Please select hero");
+      return;
+    }
+
     this.postsService.createPost(data).then(post => {
+      contentRef.value = ''
+      titleRef.value = ''
+      authorNameRef.value = ''
+      this.selectedHero='Hero'
+
       this.posts.push(post);
-    });
+      alertify.success('Post was created successfully')
+    })
+    .catch(e => {
+      alertify.error(e.error)
+    })
   }
 
   searchPosts(authorName) {
