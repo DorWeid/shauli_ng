@@ -7,7 +7,7 @@
   <mat-form-field class="new-post-short-field">
     <mat-select [(ngModel)]="selectedRole" placeholder="Role">
       <mat-option *ngFor="let role of roles" [value]="role">
-        {{ role }}
+        {{ role === '' ? 'All' : role }}
       </mat-option>
     </mat-select>
   </mat-form-field>
