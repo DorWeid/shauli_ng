@@ -44,8 +44,8 @@
           <span *ngIf="currentEditIndex==i">
             <textarea rows="4" cols="50" [(ngModel)]="comment.content"></textarea>
           </span>
-          <div>
-            <b>sitrUrl: {{comment.authorSiteURL}}</b>
+          <div *ngIf="comment.authorSiteURL">
+            <b>siteURL: {{comment.authorSiteURL}}</b>
           </div>
         </mat-card-content>
         <mat-card-actions>
@@ -58,11 +58,11 @@
     <div class="new-comment">
       <div>
         <mat-form-field class="new-comment-field">
-          <input matInput placeholder="Your name" #authorName>
+          <input required matInput placeholder="Your name" #authorName>
         </mat-form-field>
 
         <mat-form-field class="new-comment-field">
-          <input matInput placeholder="Title" #title>
+          <input required matInput placeholder="Title" #title>
         </mat-form-field>
       </div>
 
@@ -72,11 +72,11 @@
         </mat-form-field>
 
         <mat-form-field class="new-comment-content-field">
-          <textarea matInput placeholder="Content" rows="2" #content></textarea>
+          <textarea required matInput placeholder="Content" rows="2" #content></textarea>
         </mat-form-field>
       </div>
 
-      <button mat-button id="add-comment-btn" (click)="addComment(title.value, authorName.value, siteUrl.value, content.value); content.value=''; title.value=''; authorName.value='';">Add Comment</button>
+      <button mat-button id="add-comment-btn" (click)="addComment(title, authorName, siteUrl, content);">Add Comment</button>
     </div>
   </div>
 </div>
