@@ -87,12 +87,12 @@ export class PostsComponent implements OnInit {
       alertify.error("Please enter author name");
       return;
     }
-    if (!content) {
-      alertify.error("Please enter content");
-      return;
-    }
     if (!this.selectedHero) {
       alertify.error("Please select hero");
+      return;
+    }
+    if (!content) {
+      alertify.error("Please enter content");
       return;
     }
 
