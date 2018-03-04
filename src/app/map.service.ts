@@ -1,37 +1,65 @@
 import { Injectable, AfterViewInit, OnInit } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { catchError, map, tap } from "rxjs/operators";
 declare var google: any;
 
 @Injectable()
 export class MapService {
   map;
-  constructor() {
+  geocoder;
+  private url = "/api/map";
+
+  constructor(private http: HttpClient) {
     this.addMarker = this.addMarker.bind(this);
     this.onMapsReady = this.onMapsReady.bind(this);
+    this.loadMarkers = this.loadMarkers.bind(this);
+    this.geocodeAddress = this.geocodeAddress.bind(this);
   }
 
-  onMapsReady() {
+  onMapsReady(adresses) {
     const brussels = new google.maps.LatLng(50.82, 4.35);
     const mapOptions = {
-      zoom: 9,
+      zoom: 2,
       center: brussels
     };
 
     // Set the map class member
     this.map = new google.maps.Map(document.getElementById("gmap"), mapOptions);
+    this.geocoder = new google.maps.Geocoder();
 
-    this.loadMarkers();
+    adresses.forEach(a => this.geocodeAddress(a, this.geocoder, this.map, this.infowindow));
   }
 
   loadMarkers() {
-    // NOTE: Mock markers for now ...
+    return this.http
+      .get(this.url)
+      .pipe(
+        map((res: any) => {
+          return res.maps;
+        })
+      )
+      .toPromise();
+  }
 
-    const markers = [
-      new google.maps.Marker({
-        position: new google.maps.LatLng(50.82, 4.35)
-      })
-    ];
-
-    markers.forEach(this.addMarker);
+  geocodeAddress(address, geocoder, resultsMap, infowindow) {
+    geocoder.geocode({'address': address.address}, function(results, status) {
+      if (status === 'OK') {
+        resultsMap.setCenter(results[0].geometry.location);
+        let marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+        let infowindow = new google.maps.InfoWindow({
+          content: address.name
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+        marker.setMap(resultsMap);
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
   }
 
   addMarker(marker) {

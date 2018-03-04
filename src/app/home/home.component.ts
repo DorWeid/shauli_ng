@@ -16,13 +16,15 @@ export class HomeComponent implements OnInit {
   constructor(private mapService: MapService) {}
 
   ngOnInit() {
-    this.mapService.load(() => {
-      this.mapLoaded = true;
-      this.mapService.onMapsReady();
+    this.mapService.loadMarkers().then(adresses => {
+      this.mapService.load(() => {
+        this.mapLoaded = true;
+        this.mapService.onMapsReady(adresses);
+      });
     });
 
+    // Canvas
     const size = 500;
-
     var c: any = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
     ctx.font = "30px Arial";

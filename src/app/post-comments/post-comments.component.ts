@@ -12,6 +12,8 @@ import 'rxjs/add/operator/switchMap';
 })
 export class PostCommentsComponent implements OnInit {
   post;
+  isEditing;
+  currentEditIndex = -1;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,6 +23,7 @@ export class PostCommentsComponent implements OnInit {
   ) {
     this.gotoPosts = this.gotoPosts.bind(this);
     this.addComment = this.addComment.bind(this);
+    this.onEditToggle = this.onEditToggle.bind(this);
   }
 
   ngOnInit() {
@@ -46,6 +49,24 @@ export class PostCommentsComponent implements OnInit {
 
     this.commentsService.createComment(data).then(comment => {
       this.post.comments.push(comment);
+    });
+  }
+
+  onEditToggle(idx) {
+    if (this.isEditing) {
+      this.commentsService.updateComment(this.post.comments[idx]).then(() => {
+        this.isEditing = false;
+        this.currentEditIndex = -1;
+      });
+    } else {
+      this.isEditing = true;
+      this.currentEditIndex = idx;
+    }
+  }
+
+  onCommentRemove(id) {
+    this.commentsService.removeComment(id).then(() => {
+      this.post.comments = this.post.comments.filter(p => p._id !== id);
     });
   }
 }

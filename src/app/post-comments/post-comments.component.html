@@ -38,13 +38,20 @@
           </span>
         </mat-card-subtitle>
         <mat-card-content>
-          <div>
+          <span *ngIf="!isEditing;">
             <b>{{comment.content}}</b>
-          </div>
+          </span>
+          <span *ngIf="currentEditIndex==i">
+            <textarea rows="4" cols="50" [(ngModel)]="comment.content"></textarea>
+          </span>
           <div>
             <b>sitrUrl: {{comment.authorSiteURL}}</b>
           </div>
         </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="onEditToggle(i)">{{isEditing ? 'Save' : 'Edit'}}</button>
+          <button mat-button (click)="onCommentRemove(comment._id)">Remove</button>
+        </mat-card-actions>
       </mat-card>
     </div>
     <!-- ADDING NEW COMMENT  -->
