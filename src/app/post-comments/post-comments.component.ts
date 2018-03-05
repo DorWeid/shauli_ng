@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { PostsService } from '../posts.service';
 import { CommentsService } from '../comments.service';
 import 'rxjs/add/operator/switchMap';
+import * as alertify from 'alertify.js';
 
 @Component({
   selector: 'app-post-comments',
@@ -38,7 +39,12 @@ export class PostCommentsComponent implements OnInit {
     this.router.navigate(['/posts']);
   }
 
-  addComment(title, authorName, authorSiteURL, content) {
+  addComment(titleRef, authorNameRef, authorSiteURLRef, contentRef) {
+    const title = titleRef.value
+    const authorName = authorNameRef.value
+    const authorSiteURL = authorSiteURLRef.value
+    const content = contentRef.value
+
     const data = {
       postId: this.post._id,
       title,
@@ -47,9 +53,30 @@ export class PostCommentsComponent implements OnInit {
       content
     };
 
+    if (!authorName) {
+      alertify.error("Please enter author name");
+      return;
+    }
+    if (!title) {
+      alertify.error("Please enter title!");
+      return;
+    }
+    if (!content) {
+      alertify.error("Please enter content");
+      return;
+    }
+
     this.commentsService.createComment(data).then(comment => {
+      alertify.success('Comment was added successfully')
       this.post.comments.push(comment);
-    });
+      titleRef.value = ''
+      authorNameRef.value = ''
+      authorSiteURLRef.value = ''
+      contentRef.value = ''
+    })
+    .catch(e => {
+      alertify.error(e.error)
+    })
   }
 
   onEditToggle(idx) {
