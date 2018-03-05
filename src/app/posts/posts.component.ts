@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { PostsService } from "../posts.service";
-import { HerosService } from "../heros.service";
+import { HerosService } from "../heros/heros.service";
 import { Router } from '@angular/router';
 import * as alertify from 'alertify.js';
 

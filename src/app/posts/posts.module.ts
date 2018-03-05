@@ -27,7 +27,7 @@ import { MatSelectModule } from '@angular/material';
     MatButtonModule,
     MatFormFieldModule,
     MatExpansionModule,
-    MatInputModule,    
+    MatInputModule,
     PostsRoutingModule
   ],
   declarations: [

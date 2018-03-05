@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { HerosService } from '../heros.service';
+import { HerosService } from './heros.service';
 import { D3Service } from "../d3.service";
 import { Sort } from '@angular/material';
 
