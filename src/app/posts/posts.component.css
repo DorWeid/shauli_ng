@@ -8,6 +8,23 @@
   flex-wrap: wrap;
 }
 
+.posts-title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#posts-title {
+  color: #444;
+  font-weight: lighter;
+  font-size: 32px;
+  margin-right: 1vw;
+}
+
+#posts-statistics-btn {
+  height: 34px;
+}
+
 .posts mat-card {
   background-color: #314552;
   color: white;

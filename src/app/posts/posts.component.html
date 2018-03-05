@@ -56,7 +56,10 @@
 
   <button mat-button (click)="searchPosts(authorNameFilter.value);">Search</button>
 
-  <h2>Posts</h2>
+  <div class="posts-title-container">
+    <div id="posts-title">Posts</div>
+    <button mat-button class="posts-statistics-btn" matTooltip="Posts Statistics" [routerLink]="['/statistics']"><i class="material-icons">insert_chart</i></button>
+  </div>
   <div class="posts">
     <mat-card *ngFor="let post of posts; let i = index" [attr.data-index]="i">
       <mat-card-title>

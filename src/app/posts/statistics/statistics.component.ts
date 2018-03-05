@@ -6,7 +6,7 @@ import {
   AfterContentChecked,
   ElementRef
 } from "@angular/core";
-import { D3Service } from "../d3.service";
+import { D3Service } from "../../d3.service";
 import { PostsService } from "../posts.service";
 
 @Component({

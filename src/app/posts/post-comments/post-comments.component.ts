@@ -2,7 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { PostsService } from '../posts.service';
-import { CommentsService } from '../comments.service';
+import { CommentsService } from './comments.service';
 import 'rxjs/add/operator/switchMap';
 import * as alertify from 'alertify.js';
 

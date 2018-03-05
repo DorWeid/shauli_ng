@@ -1,7 +1,5 @@
 import { Component, AfterViewInit, OnInit } from "@angular/core";
 import { MapService } from "../map.service";
-import { CommonModule } from "@angular/common";
-import { NgIf } from "@angular/common";
 
 declare var google: any;
 

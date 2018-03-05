@@ -3,9 +3,11 @@ import { CommonModule }   from '@angular/common';
 import { FormsModule }    from '@angular/forms';
 
 import { PostsComponent }    from './posts.component';
-import { PostCommentsComponent }  from '../post-comments/post-comments.component';
+import { PostCommentsComponent }  from './post-comments/post-comments.component';
+import { StatisticsComponent } from "./statistics/statistics.component";
 
-import { PostsService } from '../posts.service';
+import { PostsService } from './posts.service';
+import { CommentsService } from "./post-comments/comments.service";
 
 import { PostsRoutingModule } from './posts-routing.module';
 
@@ -16,6 +18,7 @@ import { MatButtonModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -28,12 +31,14 @@ import { MatSelectModule } from '@angular/material';
     MatFormFieldModule,
     MatExpansionModule,
     MatInputModule,
-    PostsRoutingModule
+    MatTooltipModule
+    PostsRoutingModule,
   ],
   declarations: [
     PostsComponent,
-    PostCommentsComponent
+    PostCommentsComponent,
+    StatisticsComponent
   ],
-  providers: [ PostsService ]
+  providers: [ PostsService, CommentsService ]
 })
 export class PostsModule {}

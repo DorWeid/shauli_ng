@@ -3,7 +3,7 @@ import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
-import { PostsService } from "../posts.service";
+import { PostsService } from "./posts.service";
 import { HerosService } from "../heros/heros.service";
 import { Router } from '@angular/router';
 import * as alertify from 'alertify.js';

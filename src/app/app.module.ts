@@ -26,11 +26,11 @@ import { MapService } from "./map.service";
 import { D3Service } from "./d3.service";
 // import { PostsService } from "./posts.service";
 // import { HerosService } from "./heros.service";
-import { CommentsService } from "./comments.service";
+// import { CommentsService } from "./comments.service";
 
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { GroupComponent } from "./group/group.component";
-import { StatisticsComponent } from "./statistics/statistics.component";
+// import { StatisticsComponent } from "./statistics/statistics.component";
 // import { HerosComponent } from './heros/heros.component';
 
 // import { HeroNameFilterPipe } from './pipes/hero-name-filter.pipe';
@@ -48,7 +48,7 @@ import { HerosModule } from './heros/heros.module';
     HomeComponent,
     // PostsComponent,
     GroupComponent,
-    StatisticsComponent,
+    // StatisticsComponent,
     // HerosComponent,
     // HeroNameFilterPipe,
     // HeroHpFilterPipe,
@@ -73,8 +73,8 @@ import { HerosModule } from './heros/heros.module';
     BrowserAnimationsModule,
     AppRoutingModule,
   ],
-  providers: [WeatherService, FBService, MapService, D3Service, //PostsService, HerosService
-              CommentsService],
+  providers: [WeatherService, FBService, MapService, D3Service, //PostsService, HerosService, CommentsService
+              ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
