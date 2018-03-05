@@ -8,6 +8,7 @@ export class MapService {
   map;
   geocoder;
   private url = "/api/map";
+  infowindow
 
   constructor(private http: HttpClient) {
     this.addMarker = this.addMarker.bind(this);

@@ -8,27 +8,27 @@
     <div class="new-post">
       <div class="new-post-group">
         <mat-form-field class="new-post-short-field">
-          <input matInput placeholder="Title" #title>
+          <input required matInput placeholder="Title" #title>
         </mat-form-field>
 
         <mat-form-field class="new-post-short-field">
-          <input matInput placeholder="Author" #authorName>
+          <input required matInput placeholder="Author" #authorName>
         </mat-form-field>
 
         <mat-form-field class="new-post-short-field">
           <mat-select [(ngModel)]="selectedHero" placeholder="Hero">
             <mat-option *ngFor="let hero of heros" [value]="hero.id">
-              {{ hero.name }}
+              {{ hero.name === '' ? 'Select Hero' : hero.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="new-post-group">
         <mat-form-field>
-          <textarea matInput placeholder="Content" rows="2" #content></textarea>
+          <textarea matInput required placeholder="Content" rows="2" #content></textarea>
         </mat-form-field>
       </div>
-      <button mat-button id="add-post-btn" (click)="addPost(content.value, title.value, authorName.value); content.value=''; title.value=''; authorName.value='';">Add</button>
+      <button mat-button id="add-post-btn" (click)="addPost(content, title, authorName);">Add</button>
     </div>
   </mat-expansion-panel>
   <br />
@@ -37,7 +37,7 @@
   <mat-form-field class="new-post-short-field">
     <mat-select [(ngModel)]="selectedRoleFilter" placeholder="Role">
       <mat-option *ngFor="let role of roles" [value]="role">
-        {{ role }}
+        {{ role === '' ? 'All' : role }}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -49,12 +49,12 @@
   <mat-form-field class="new-post-short-field">
     <mat-select [(ngModel)]="selectedHeroFilter" placeholder="Hero">
       <mat-option *ngFor="let hero of heros" [value]="hero.id">
-        {{ hero.name }}
+        {{ hero.name === '' ? 'All' : hero.name }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <button mat-button (click)="searchPosts(authorNameFilter.value); authorNameFilter.value='';">Search</button>
+  <button mat-button (click)="searchPosts(authorNameFilter.value);">Search</button>
 
   <h2>Posts</h2>
   <div class="posts">
