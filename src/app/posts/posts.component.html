@@ -18,7 +18,7 @@
         <mat-form-field class="new-post-short-field">
           <mat-select [(ngModel)]="selectedHero" placeholder="Hero">
             <mat-option *ngFor="let hero of heros" [value]="hero.id">
-              {{ hero.name === '' ? 'Hero' : hero.name }}
+              {{ hero.name === '' ? 'Select Hero' : hero.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>

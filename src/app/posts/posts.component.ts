@@ -19,7 +19,7 @@ export class PostsComponent implements OnInit {
   heros = [];
   isEditing = false;
   currentEditIndex = -1;
-  selectedHero;
+  selectedHero = '';
 
   // For the filters
   roles = ['', 'Attack', 'Defender', 'Tank', 'Support'];
@@ -97,16 +97,18 @@ export class PostsComponent implements OnInit {
     }
 
     this.postsService.createPost(data).then(post => {
-      contentRef.value = ''
-      titleRef.value = ''
-      authorNameRef.value = ''
-      this.selectedHero='Hero'
+
+      // Clears the inputs after successfull post creation
+      contentRef.value = '';
+      titleRef.value = '';
+      authorNameRef.value = '';
+      this.selectedHero='';
 
       this.posts.push(post);
-      alertify.success('Post was created successfully')
+      alertify.success('Post was created successfully');
     })
     .catch(e => {
-      alertify.error(e.error)
+      alertify.error(e.error);
     })
   }
 
