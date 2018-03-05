@@ -119,8 +119,8 @@ export class D3Service {
 
     var label = d3
       .arc()
-      .outerRadius(radius - 40)
-      .innerRadius(radius - 40);
+      .outerRadius(radius - 60)
+      .innerRadius(radius - 60);
 
     var arc = g
       .selectAll(".arc")
