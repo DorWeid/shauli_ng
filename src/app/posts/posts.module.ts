@@ -31,7 +31,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatFormFieldModule,
     MatExpansionModule,
     MatInputModule,
-    MatTooltipModule
+    MatTooltipModule,
     PostsRoutingModule,
   ],
   declarations: [

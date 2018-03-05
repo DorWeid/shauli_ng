@@ -15,12 +15,21 @@
   margin-bottom: 5vh;
 }
 
+.mat-card-actions, .mat-card-content, .mat-card-subtitle, .mat-card-title {
+  margin-bottom: 0px;
+}
+/* mat-card-title {
+  margin-bottom: 0px;
+} */
+
 .comments-title {
   font-size: 24px;
   margin-bottom: 3vh;
 }
 
 .comment-card {
+  padding-top: 0px;
+  padding-bottom: 4vh;
   display: flex;
   flex-direction: column;
   align-items: center;

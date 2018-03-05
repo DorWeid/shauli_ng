@@ -1,5 +1,4 @@
 .posts-container {
-  padding-left: 30px;
 }
 
 .posts {
@@ -12,6 +11,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+#filter-btn {
+  color: white;
 }
 
 #posts-title {

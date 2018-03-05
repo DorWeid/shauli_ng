@@ -1,5 +1,6 @@
 .main-container {
   width: 75%;
+  padding-left: 30px;
 }
 
 .app-bar-title {
@@ -21,6 +22,8 @@
   margin-top: -6vh;
   display: flex;
   justify-content: space-between;
+  width: 96%;
+  margin-left: 2vw;
 }
 
 .part-nav-bar {
