@@ -1,15 +1,17 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { PostsService } from '../posts.service';
-import { CommentsService } from './comments.service';
-import 'rxjs/add/operator/switchMap';
-import * as alertify from 'alertify.js';
+import { Component, OnInit, HostBinding } from "@angular/core";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
+import { Observable } from "rxjs/Observable";
+import { PostsService } from "../posts.service";
+import { HerosService } from "../../heros/heros.service";
+
+import { CommentsService } from "./comments.service";
+import "rxjs/add/operator/switchMap";
+import * as alertify from "alertify.js";
 
 @Component({
-  selector: 'app-post-comments',
-  templateUrl: './post-comments.component.html',
-  styleUrls: ['./post-comments.component.css']
+  selector: "app-post-comments",
+  templateUrl: "./post-comments.component.html",
+  styleUrls: ["./post-comments.component.css"]
 })
 export class PostCommentsComponent implements OnInit {
   post;
@@ -20,30 +22,34 @@ export class PostCommentsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private postsService: PostsService,
+    private herosService: HerosService,
     private commentsService: CommentsService
   ) {
     this.gotoPosts = this.gotoPosts.bind(this);
     this.addComment = this.addComment.bind(this);
     this.onEditToggle = this.onEditToggle.bind(this);
+    this.updateLocalStorage = this.updateLocalStorage.bind(this);
   }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get("id");
 
     this.postsService.getPost(id).then(post => {
       this.post = post;
+
+      this.updateLocalStorage(post.hero.name);
     });
   }
 
   gotoPosts() {
-    this.router.navigate(['/posts']);
+    this.router.navigate(["/posts"]);
   }
 
   addComment(titleRef, authorNameRef, authorSiteURLRef, contentRef) {
-    const title = titleRef.value
-    const authorName = authorNameRef.value
-    const authorSiteURL = authorSiteURLRef.value
-    const content = contentRef.value
+    const title = titleRef.value;
+    const authorName = authorNameRef.value;
+    const authorSiteURL = authorSiteURLRef.value;
+    const content = contentRef.value;
 
     const data = {
       postId: this.post._id,
@@ -66,17 +72,19 @@ export class PostCommentsComponent implements OnInit {
       return;
     }
 
-    this.commentsService.createComment(data).then(comment => {
-      alertify.success('Comment was added successfully')
-      this.post.comments.push(comment);
-      titleRef.value = ''
-      authorNameRef.value = ''
-      authorSiteURLRef.value = ''
-      contentRef.value = ''
-    })
-    .catch(e => {
-      alertify.error(e.error)
-    })
+    this.commentsService
+      .createComment(data)
+      .then(comment => {
+        alertify.success("Comment was added successfully");
+        this.post.comments.push(comment);
+        titleRef.value = "";
+        authorNameRef.value = "";
+        authorSiteURLRef.value = "";
+        contentRef.value = "";
+      })
+      .catch(e => {
+        alertify.error(e.error);
+      });
   }
 
   onEditToggle(idx) {
@@ -95,5 +103,16 @@ export class PostCommentsComponent implements OnInit {
     this.commentsService.removeComment(id).then(() => {
       this.post.comments = this.post.comments.filter(p => p._id !== id);
     });
+  }
+
+  updateLocalStorage(heroName) {
+    if (typeof Storage !== "undefined") {
+      // Store
+      const heroMap = JSON.parse(localStorage.getItem("heroMap") || "{}");
+      heroMap[heroName] = heroMap[heroName]
+        ? parseInt(heroMap[heroName], 10) + 1
+        : 1;
+      localStorage.setItem("heroMap", JSON.stringify(heroMap));
+    }
   }
 }

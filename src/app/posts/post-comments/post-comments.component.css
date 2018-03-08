@@ -1,6 +1,6 @@
 .mat-button {
-    background-color: #3865dd;
-    margin-bottom: 3vh;
+  background-color: #3865dd;
+  margin-bottom: 3vh;
 }
 
 .displayed-post {
@@ -11,11 +11,14 @@
   margin: 10px;
   flex-basis: 25%;
   -webkit-box-shadow: 0px 0px 15px black;
-  -moz-box-shadow:    0px 0px 15px black;
+  -moz-box-shadow: 0px 0px 15px black;
   margin-bottom: 5vh;
 }
 
-.mat-card-actions, .mat-card-content, .mat-card-subtitle, .mat-card-title {
+.mat-card-actions,
+.mat-card-content,
+.mat-card-subtitle,
+.mat-card-title {
   margin-bottom: 0px;
 }
 /* mat-card-title {
@@ -67,4 +70,12 @@
 
 #add-comment-btn {
   width: 20vw;
+}
+
+.suggested-hero {
+  font-weight: bold;
+}
+
+.suggested-hero:hover {
+  cursor: pointer;
 }

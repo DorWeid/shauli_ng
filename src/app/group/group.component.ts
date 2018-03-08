@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FBService } from "../fb.service";
+import { TwitterService } from "../twitter.service";
 declare var window: any;
 @Component({
   selector: "app-group",
@@ -7,7 +8,10 @@ declare var window: any;
   styleUrls: ["./group.component.css"]
 })
 export class GroupComponent implements OnInit {
-  constructor(private fbService: FBService) {}
+  constructor(
+    private fbService: FBService,
+    private twitterService: TwitterService
+  ) {}
 
   ngOnInit() {
     window.FB.XFBML.parse();
